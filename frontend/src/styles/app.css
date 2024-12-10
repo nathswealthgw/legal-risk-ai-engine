@@ -1,0 +1,9 @@
+:root { font-family: Inter, system-ui, Arial, sans-serif; }
+body { margin: 0; background: #0b1021; color: #e8ecf3; }
+.container { max-width: 1024px; margin: 0 auto; padding: 2rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1rem; }
+.risk-card { border: 1px solid #2d3e6b; border-radius: 10px; padding: 1rem; background: #121935; }
+.risk-card.critical { border-color: #ff5c5c; }
+.risk-card.high { border-color: #f89f41; }
+.risk-card.medium { border-color: #f2d35d; }
+.risk-card.low { border-color: #4ade80; }

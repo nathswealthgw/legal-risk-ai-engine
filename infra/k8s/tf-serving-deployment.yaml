@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tf-serving
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tf-serving
+  template:
+    metadata:
+      labels:
+        app: tf-serving
+    spec:
+      containers:
+        - name: tf-serving
+          image: tensorflow/serving:2.16.1
+          args:
+            - --model_name=failure_model
+            - --model_base_path=/models/failure_model
+          ports:
+            - containerPort: 8501
+          volumeMounts:
+            - name: failure-model-artifacts
+              mountPath: /models/failure_model
+              readOnly: true
+      volumes:
+        - name: failure-model-artifacts
+          persistentVolumeClaim:
+            claimName: failure-model-pvc
